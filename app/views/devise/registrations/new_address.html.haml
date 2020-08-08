@@ -1,0 +1,48 @@
+.block.horizontal-padding-25
+  .block__menu
+    住所入力
+.block.horizontal-padding-25
+  = form_with id: 'new_address', class: 'new_address', local: true do |f|
+    .input-field
+      .input-field-main
+        = f.label :hoge, "郵便番号"
+        %span.required-true
+          必須
+        %br
+        = f.text_field :hoge, required: true, placeholder: "例）123-4567"
+    .input-field
+      .input-field-main
+        = f.label :hoge, "都道府県"
+        %span.required-true
+          必須
+        %br
+        = f.collection_select :hoge, [], :id , :name, {include_blank: "---"}, required: true
+    .input-field
+      .input-field-main
+        = f.label :hoge, "市区町村"
+        %span.required-true
+          必須
+        %br
+        = f.text_field :hoge, required: true, placeholder: "例）横浜市緑区"
+    .input-field
+      .input-field-main
+        = f.label :hoge, "番地"
+        %span.required-true
+          必須
+        %br
+        = f.text_field :hoge, required: true, placeholder: "例）青山1-1-1"
+    .input-field
+      .input-field-main
+        = f.label :hoge, "建物名"
+        %span.required-false
+          任意
+        %br
+        = f.text_field :hoge, placeholder: "例）柳ビル103"
+    .input-field
+      .input-field-main
+        = f.label :hoge, "電話番号"
+        %span.required-false
+          任意
+        %br
+        = f.text_field :hoge, placeholder: "例）09012345678"
+    = f.submit "次へ進む", class:"button back-red font-white"
