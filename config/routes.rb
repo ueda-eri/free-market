@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'users/select' => 'users/registrations#select'
-    get 'users/confirm_phone' => 'users/registrations#confirm_phone'
-    get 'users/new_address' => 'users/registrations#new_address'
-    get 'users/create_address' => 'users/registrations#create_address'
+    get 'users/confirm_phone' => 'users/registrations#confirm_phone'    ## ③電話番号認証画面のアクション
+    get 'users/new_address' => 'users/registrations#new_address'        ## ④addressのフォームのアクション
+    post 'users/create_address' => 'users/registrations#create_address' ## ⑤addressをsaveするアクション
   end
 
   resources :users, only: [:show]
