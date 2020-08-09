@@ -1,4 +1,4 @@
-server '18.178.150.52', user: 'ec2-user', roles: %w{app db web}
+server '18.180.184.70', user: 'ec2-user', roles: %w{app db web}
 
 # server-based syntax
 # ======================

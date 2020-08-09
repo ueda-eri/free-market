@@ -1,11 +1,11 @@
 # capistranoのバージョンを記載。固定のバージョンを利用し続け、バージョン変更によるトラブルを防止する
-lock '3.12.1'
+lock '3.14.1'
 
 # Capistranoのログの表示に利用する
 set :application, 'free-market'
 
 # どのリポジトリからアプリをpullするかを指定する
-set :repo_url,  'git@github.com:usagrammer/free-market.git'
+set :repo_url,  'git@github.com:ueda-eri/free-market.git'
 
 # バージョンが変わっても共通で参照するディレクトリを指定
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
@@ -15,7 +15,7 @@ set :rbenv_ruby, '2.6.5' #カリキュラム通りに進めた場合、2.6.5で�
 
 # どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/free-market_linux2.pem']
+                  keys: ['~/.ssh/test1.pem']
 
 # プロセス番号を記載したファイルの場所
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
