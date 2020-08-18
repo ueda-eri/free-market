@@ -2,9 +2,12 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to :category
+  has_many :images, dependent: :destroy
+  accepts_nested_attributes_for :images, allow_destroy: true, update_only: true
 
   validates :name, :price, :detail, :condition, :delivery_fee_payer, :delivery_method, :delivery_days, :deal, presence: true
   validates :price, numericality:{greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  validates :images, length: { minimum: 1, maximum: 5, message: "の数が不正です" }
 
   enum condition:{
     "新品、未使用": 0,
