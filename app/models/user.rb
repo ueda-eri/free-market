@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
          has_one :sns_credential, dependent: :destroy
          has_one :address, dependent: :destroy
+         has_one :card, dependent: :destroy
 
          def self.from_omniauth(auth_data)
           email = auth_data.info.email
