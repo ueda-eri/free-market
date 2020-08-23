@@ -2,6 +2,8 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to :category
+  belongs_to :seller, class_name: "User"
+  belongs_to :buyer, class_name: "User", optional: :true
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true, update_only: true
 
@@ -11,8 +13,8 @@ class Item < ApplicationRecord
 
   scope :new_items, -> { order("created_at DESC").limit(4) }
 
-  def self.search_by_categories(categories)
-    return Item.where(category: categories).includes(:images)
+  def self.search_by_categories(category_ids)
+    return Item.where(category_id: category_ids).includes(:images)
   end
 
   enum condition:{
